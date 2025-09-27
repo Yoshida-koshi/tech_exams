@@ -3,40 +3,80 @@
         "id": "eeba0c34-6cb6-2cf1-7e24-f4d717892ac0",
         "name": "カレー",
         "number_of_people": 4,
-        "calories": 600,
-        "cooking_time": 45,
-        "category": "主食"
+        "calories": 300,
+        "cooking_time": 20,
+        "category": "主食",
+        "nutrition_list": [
+            {
+                "id": "9e5a0536-5d84-afe2-048a-98ec6772d513",
+                "nutrient": "タンパク質",
+                "amount": 25,
+                "recipe_id": "eeba0c34-6cb6-2cf1-7e24-f4d717892ac0"
+            }
+        ]
     },
     {
         "id": "5ccfc6b6-6d9e-44b0-39e8-5d8ad9efe21f",
         "name": "サラダ",
         "number_of_people": 2,
         "calories": 200,
-        "cooking_time": 10,
-        "category": "副菜"
+        "cooking_time": 15,
+        "category": "副菜",
+        "nutrition_list": [
+            {
+                "id": "6aca4840-e3bd-c8f8-92bf-24e9a8b32747",
+                "nutrient": "タンパク質",
+                "amount": 15,
+                "recipe_id": "5ccfc6b6-6d9e-44b0-39e8-5d8ad9efe21f"
+            }
+        ]
     },
     {
         "id": "71d1f52c-d06a-ab78-2740-db3a063ea7e9",
         "name": "パスタ",
         "number_of_people": 3,
-        "calories": 700,
-        "cooking_time": 20,
-        "category": "主食"
+        "calories": 400,
+        "cooking_time": 30,
+        "category": "主食",
+        "nutrition_list": [
+            {
+                "id": "84a5622b-6dc6-0d17-9d12-d426ead4ffa8",
+                "nutrient": "タンパク質",
+                "amount": 30,
+                "recipe_id": "71d1f52c-d06a-ab78-2740-db3a063ea7e9"
+            }
+        ]
     },
     {
         "id": "069d4537-25ad-8ef9-be08-7cb67ebd5222",
         "name": "とんかつ",
         "number_of_people": 4,
-        "calories": 1300,
-        "cooking_time": 60,
-        "category": "主菜"
+        "calories": 500,
+        "cooking_time": 25,
+        "category": "主菜",
+        "nutrition_list": [
+            {
+                "id": "9880143d-8e0c-6f32-e2b9-804be398e172",
+                "nutrient": "タンパク質",
+                "amount": 35,
+                "recipe_id": "069d4537-25ad-8ef9-be08-7cb67ebd5222"
+            }
+        ]
     },
     {
         "id": "5bf4a4b5-3aec-f564-3207-ff1aebcf4f6e",
         "name": "味噌汁",
         "number_of_people": 4,
-        "calories": 500,
+        "calories": 700,
         "cooking_time": 35,
-        "category": "副菜"
+        "category": "副菜",
+        "nutrition_list": [
+            {
+                "id": "b9e76836-a73f-4eaa-ec66-0fbc826c4483",
+                "nutrient": "タンパク質",
+                "amount": 40,
+                "recipe_id": "5bf4a4b5-3aec-f564-3207-ff1aebcf4f6e"
+            }
+        ]
     }
 ]
