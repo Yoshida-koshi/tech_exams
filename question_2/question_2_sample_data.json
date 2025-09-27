@@ -1,0 +1,42 @@
+[
+    {
+        "id": "eeba0c34-6cb6-2cf1-7e24-f4d717892ac0",
+        "name": "カレー",
+        "number_of_people": 4,
+        "calories": 600,
+        "cooking_time": 45,
+        "category": "主食"
+    },
+    {
+        "id": "5ccfc6b6-6d9e-44b0-39e8-5d8ad9efe21f",
+        "name": "サラダ",
+        "number_of_people": 2,
+        "calories": 200,
+        "cooking_time": 10,
+        "category": "副菜"
+    },
+    {
+        "id": "71d1f52c-d06a-ab78-2740-db3a063ea7e9",
+        "name": "パスタ",
+        "number_of_people": 3,
+        "calories": 700,
+        "cooking_time": 20,
+        "category": "主食"
+    },
+    {
+        "id": "069d4537-25ad-8ef9-be08-7cb67ebd5222",
+        "name": "とんかつ",
+        "number_of_people": 4,
+        "calories": 1300,
+        "cooking_time": 60,
+        "category": "主菜"
+    },
+    {
+        "id": "5bf4a4b5-3aec-f564-3207-ff1aebcf4f6e",
+        "name": "味噌汁",
+        "number_of_people": 4,
+        "calories": 500,
+        "cooking_time": 35,
+        "category": "副菜"
+    }
+]
