@@ -33,7 +33,10 @@ def calculate_max_protein(recipe_list, max_calories, max_cooking_time)
       end
     end
   end
+  dp
+end
 
+def find_max_protein_dp(dp, max_calories, max_cooking_time)
   max_protein_dp = { :max_protein_amount => 0, :ids => [] }
   max_calories.downto(0) do |cal|
     max_cooking_time.downto(0) do |time|
@@ -42,9 +45,17 @@ def calculate_max_protein(recipe_list, max_calories, max_cooking_time)
       end
     end
   end
+  max_protein_dp
+end
+
+def print_max_protein_amount_chosen_recipe_id(max_protein_dp)
   puts "最大タンパク質量: #{max_protein_dp[:max_protein_amount]}g"
   puts "選んだレシピID: #{max_protein_dp[:ids]}"
 end
 
+max_calories = 700
+max_cooking_time = 45
 recipe_list = load_json
-calculate_max_protein(recipe_list,  700, 45)
+dp = calculate_max_protein(recipe_list,  max_calories, max_cooking_time)
+max_protein_dp = find_max_protein_dp(dp, max_calories, max_cooking_time)
+print_max_protein_chosen_recipe_id(max_protein_dp)
