@@ -5,7 +5,7 @@
 | カラム名 | 型 | 説明 | NULL許容 | 備考 | 
 | ------ | ------ | ------ | ------ | ------ |
 | id | String | RecipeテーブルのPrimary Key | × | uuidで管理する
-| name | String | レシピ名 | × | |
+| name | String | レシピ名 | × | Unique Key |
 | how_to_make | String | 作り方の説明 | ○ | |
 | number_of_people | Integer | 料理を食べる人数 | × | |
 | cooking_time | Integer | 調理時間(分) | × | |
