@@ -1,0 +1,405 @@
+openapi: "3.0.3"
+info:
+  title: "Tech exams API仕様書"
+  version: "1.0.0"
+  
+tags:
+  - name: Recipe
+  - name: Material
+  - name: CookingProcess
+  - name: Nutrition
+  
+paths:
+  /recipe:
+    post:
+      tags:
+        - Recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - number_of_people
+                - cooking_time
+                - category
+              properties:
+                name:
+                  type: string
+                  example: レシピ名
+                how_to_make:
+                  type: string
+                  example: 作り方の説明
+                  nullable: true
+                number_of_people:
+                  type: integer
+                  example: 4
+                cooking_time:
+                  type: integer
+                  example: 45
+                category:
+                  type: string
+                  example: 主食
+                calories:
+                  type: integer
+                  example: 450
+                  nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: レシピの追加に成功しました
+        "422":
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "レシピの追加に失敗しました: <エラーメッセージ>"
+        "500":
+          description: Internal Server Error
+    get:
+      tags:
+        - Recipe
+      parameters:
+        - name: name
+          in: query
+          schema:
+            type: string
+          required: true
+          description: レシピ名
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: fsafsa-fdfasf-dfasf-fasdfsa
+                  name:
+                    type: string
+                    example: レシピ名
+                  how_to_make:
+                    type: string
+                    example: 作り方の説明
+                  number_of_people:
+                    type: integer
+                    example: 4
+                  cooking_time:
+                    type: integer
+                    example: 45
+                  category:
+                    type: string
+                    example: 主食
+                  calories:
+                    type: integer
+                    example: 450
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: nameが存在しません
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: レシピが存在しません
+        "500":
+          description: Internal Server Error
+  /recipes:
+    get:
+      tags:
+        - Recipe
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          required: true
+          description: ページネーションのページ数
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+          required: true
+          description: 1ページあたりで取得するレシピ数
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - type: object
+                      properties:
+                        id:
+                          type: string
+                          example: fsafsa-fdfasf-dfasf-fasdfsa
+                        name:
+                          type: string
+                          example: レシピ名
+                        how_to_make:
+                          type: string
+                          example: 作り方の説明
+                        number_of_people:
+                          type: integer
+                          example: 4
+                        cooking_time:
+                          type: integer
+                          example: 45
+                        category:
+                          type: string
+                          example: 主食
+                        calories:
+                          type: integer
+                          example: 450
+                        materials:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: fdfas-dfafs-fdsf-fddfa
+                                  name:
+                                    type: string
+                                    example: 材料名
+                                  usage_amount:
+                                    type: string
+                                    example: 材料の使用量
+                        cooking_processes:
+                          type: array
+                          items: 
+                            oneOf:
+                              - type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: fasefs-fasefas-fesfsa-fsef
+                                  order_number:
+                                    type: integer
+                                    example: 1
+                                  process:
+                                    type: string
+                                    example: 手順の説明
+                        nutritions:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: feafse-fasef-fasf-efas
+                                  nutrient:
+                                    type: string
+                                    example: 栄養素名
+                                  amount:
+                                    type: integer
+                                    example: 100
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: pageが存在しません
+        "500":
+          description: Internal Server Error
+  /material:
+    post:
+      tags:
+        - Material
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - usage_amount
+                - recipe_id
+              properties:
+                name:
+                  type: string
+                  example: 材料名
+                usage_amount:
+                  type: string
+                  example: 材料の使用量
+                recipe_id:
+                  type: string
+                  example: fafsaf-dfasfsda-fadfasdf-fdaf
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 材料の追加に成功しました
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: レシピが存在しないので、材料データを登録できません
+        "422":
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "材料の追加に失敗しました: <エラーメッセージ>"
+        "500":
+          description: Internal Server Error
+  /cooking_process:
+    post:
+      tags:
+        - CookingProcess
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - order_number
+                - process
+                - recipe_id
+              properties:
+                order_number:
+                  type: integer
+                  example: 1
+                process:
+                  type: string
+                  example: 手順の説明
+                recipe_id:
+                  type: string
+                  example: ffsadfa-fdafsaf-fasddfasf-dfadsf
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 手順の追加に成功しました
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: レシピが存在しないので、手順を登録できません
+        "422":
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "手順の追加に失敗しました: <エラーメッセージ>"
+        "500":
+          description: Internal Server Error
+  /nutrition:
+    post:
+      tags:
+        - Nutrition
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - nutrient
+                - amount
+                - recipe_id
+              properties:
+                nutrient:
+                  type: string
+                  example: 栄養素名
+                amount:
+                  type: integer
+                  example: 100
+                recipe_id:
+                  type: string
+                  example: fafdfefasf-fesfasf-fasfeaf-fsaef
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 栄養素の追加に成功しました
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: レシピが存在しないので、栄養素を登録できません
+        "422":
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "栄養素の追加に失敗しました: <エラーメッセージ>"
+        "500":
+          description: Internal Server Error
